@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const SVG = require("@svgdotjs/svg.js");
+const { SVG } = require("@svgdotjs/svg.js");
 
 async function generateLogo() {
   const answers = await inquirer.prompt([
@@ -35,20 +35,24 @@ async function generateLogo() {
   // Add the specified shape to the SVG document
   switch (shape) {
     case "circle":
-      svg.circle(100).move(100, 50).fill(shapeColor);
+      svg.circle(100, 100, 50).fill(shapeColor);
       break;
     case "triangle":
-      svg.polygon("100,150 200,150 150,50").fill(shapeColor);
+      svg.polygon("100,100 150,50 200,100").fill(shapeColor);
       break;
     case "square":
-      svg.rect(100, 50, 100, 100).fill(shapeColor);
+      svg.rect(75, 75, 150, 150).fill(shapeColor);
       break;
     default:
       break;
   }
 
   // Add the specified text to the SVG document
-  svg.text(text).move(150, 125).font({ size: 48, anchor: "middle" }).fill(textColor);
+  svg.text(150, 125, text).attr({
+    "text-anchor": "middle",
+    "font-size": "48px",
+    fill: textColor
+  });
 
   // Write the SVG document to a file
   fs.writeFileSync("logo.svg", svg.svg());
