@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/AJChrystall/SVG-LOGO-GENERATOR#readme",
   "dependencies": {
-    "inquirer": "^9.2.0",
+    "@svgdotjs/svg.js": "^3.1.2",
+    "inquirer": "^7.3.3",
     "jest": "^29.5.0",
     "svg.js": "^2.7.1"
   },
